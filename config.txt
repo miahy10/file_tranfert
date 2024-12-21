@@ -1,3 +1,4 @@
+client.directory=client_directory
 main_server.port=12345
 main_server.directory=server_directory
 chunk_size=1024

@@ -21,7 +21,7 @@ public class Client {
                 String[] parts = input.split(" ");
                 switch (parts[0].toUpperCase()) {
                     case "GET":
-                        if (parts.length < 2) {
+                        if (parts.length < 3) {
                             System.out.println("Usage : GET <nom de fichier> <chemin destination>");
                         } else {
                             receiveFile(parts[1], parts[2]);
@@ -78,7 +78,7 @@ public class Client {
         }
     }
 
-    private static void receiveFile(String fileName, String destinationPath) {
+    private static void receiveFile(String fileName, String destinationPath) { 
         try (Socket socket = new Socket(SERVER_HOST, SERVER_PORT);
              DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
              DataInputStream dis = new DataInputStream(socket.getInputStream())) {
@@ -103,7 +103,7 @@ public class Client {
                     }
                 }
     
-                // Lire les données du fichier
+                // Lire les données du fichier et reconstruire le fichier
                 try (FileOutputStream fos = new FileOutputStream(destinationFile)) {
                     byte[] buffer = new byte[CHUNK_SIZE];
                     long totalRead = 0;
@@ -126,8 +126,6 @@ public class Client {
             System.out.println("Erreur lors de la réception : " + e.getMessage());
         }
     }
-    
-    
 
     private static void listFiles() {
         try (Socket socket = new Socket(SERVER_HOST, SERVER_PORT);
