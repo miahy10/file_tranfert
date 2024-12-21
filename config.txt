@@ -1,0 +1,10 @@
+main_server.port=12345
+main_server.directory=server_directory
+chunk_size=1024
+sub_server.count=3
+sub_server.1.host=127.0.0.1
+sub_server.1.port=12346
+sub_server.2.host=127.0.0.1
+sub_server.2.port=12347
+sub_server.3.host=127.0.0.1
+sub_server.3.port=12348
